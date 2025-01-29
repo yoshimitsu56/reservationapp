@@ -1,0 +1,15 @@
+<h1>アカウント</h1>
+
+<table>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= current_user.email %></td>
+  </tr>
+  <tr>
+    <th>パスワード</th>
+    <td>*********</td>
+  </tr>
+</table>
+
+<p><%= link_to "編集", "/users/edit" %></p>
+<p><%= link_to "戻る", :back %></p>

@@ -1,0 +1,29 @@
+<h3>予約内容の確認</h3>
+
+<%= form_with model: @reservation do |reservation| %>
+  <table>
+    <tr>
+      <th>チェックイン</th>
+      <td><%= reservation.date_field :rev_checkin, readonly: true %></td>
+    </tr>
+    <tr>
+      <th>チェックアウト</th>
+      <td><%= reservation.date_field :rev_checkout,readonly: true %></td>
+    </tr>
+    <tr>
+      <th>日数</td>
+      <td><%= reservation.number_field :rev_lengthofstay, readonly: true %>日</td>
+    </tr>
+    <tr>
+      <th>人数</th>
+      <td><%= reservation.number_field :rev_headcount, readonly: true %>人</td>
+    </tr>
+    <tr>
+      <th>お支払い総額</th>
+      <td><%= reservation.number_field :rev_finalbill, readonly:true %>円</td>
+    </tr>
+    <%= reservation.hidden_field :room_id %>
+    <%= reservation.hidden_field :user_id %>
+  </table>
+    <%= reservation.submit "予約を確定" %>
+<% end %>

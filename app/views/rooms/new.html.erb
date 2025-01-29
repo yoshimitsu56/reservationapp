@@ -1,0 +1,29 @@
+<h2>施設登録</h2>
+
+<%= render "shared/error", obj: @room %>
+
+<%= form_with model: @room do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :room_name, "施設名" %></th>
+      <td><%= f.text_field :room_name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :room_introduction, "施設詳細" %></th>
+      <td><%= f.text_area :room_introduction %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :room_fee, "料金" %></th>
+      <td><%= f.text_field :room_fee %>円</td>
+    </tr>
+    <tr>
+      <th><%= f.label :room_address, "住所" %></th>
+      <td><%= f.text_field :room_address %></td>
+    </tr>
+  </table>
+  <div>
+    <ul>
+      <li><%= f.submit "登録完了する"%></li>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<h2>プロフィール</h2>
+
+<%= form_with model: @user, local: true do |f| %>
+
+  <table>
+    <tr>
+      <th>アイコン画像</th>
+      <td>
+      <% if @user.user_image.present? %>
+        <%= image_tag @user.user_image.url%>
+      <% else %>
+        <%= image_tag("default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png")%>
+      <% end %>
+      <%= f.file_field :user_image, id:"item-image", class:"hidden" %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :user_name, "名前" %></th>
+      <td><%= f.text_field :user_name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :user_introduction, "自己紹介" %></th>
+      <td><%= f.text_area :user_introduction %></td>
+    </tr>
+  </table>
+
+  <div>
+    <ul>
+      <li><%= f.submit "編集を完了する" %></li>
+    </ul>
+  </div>
+<% end %>

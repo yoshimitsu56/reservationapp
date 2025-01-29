@@ -1,0 +1,23 @@
+<h2>予約する</h2>
+
+<%= render "shared/error", obj: @reservation %>
+
+<%= form_with(url: confirm_reservations_path, method: :post, model: [@room, @reservation], local: true) do |f| %>
+
+  <div>
+    <%= f.label :rev_checkin, "チェックイン日" %>
+    <%= f.date_field :rev_checkin %>
+  </div>
+  <div>
+    <%= f.label :rev_checkout, "チェックアウト日" %>
+    <%= f.date_field :rev_checkout %>
+  </div>
+  <div>
+    <%= f.label :rev_headcount, "人数" %>
+    <%= f.text_field :rev_headcount %>人
+  </div>
+  <div>
+    <%= f.submit "予約する" %>
+  </div>
+  <%= f.hidden_field :room_id %>
+<% end %>

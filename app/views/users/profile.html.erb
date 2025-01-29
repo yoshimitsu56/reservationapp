@@ -1,0 +1,25 @@
+<h2>プロフィール</h2>
+
+<table>
+  <tr>
+    <th>アイコン画像</th>
+    <td>
+    <% if @user.user_image.present? %>
+      <%= image_tag @user.user_image.url %>
+    <% else %>
+      <%= image_tag("default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png")%>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td><%= current_user.user_name %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= current_user.user_introduction %></td>
+  </tr>
+</table>
+
+<%= link_to '編集', "/users/:id/edit" %>
+<p><%= link_to "戻る", :back %></p>

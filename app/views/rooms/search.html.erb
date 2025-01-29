@@ -1,0 +1,38 @@
+<%= form_with(url: search_rooms_path, method: :get, local: true) do |f| %>
+  <%= f.text_field :area, placeholder: 'エリア名' %>
+  <%= f.submit "検索", class: "btn btn-primary" %>
+  <%= f.text_field :word, placeholder: 'キーワード' %>
+  <%= f.submit "検索", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to '東京', '/rooms/search?area=東京&commit=検索' %>
+<%= link_to '大阪', '/rooms/search?area=大阪&commit=検索' %>
+<%= link_to '京都', '/rooms/search?area=京都&commit=検索' %>
+<%= link_to '札幌', '/rooms/search?area=札幌&commit=検索' %>
+<p>全<%= @rooms.present? ? @rooms.count : 0 %>件</p>
+
+
+<% if params[:area].present? || params[:word].present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>施設名</th>
+        <th>住所</th>
+        <th>施設紹介</th>
+        <th>宿泊料金</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @rooms.each do |room| %>
+        <tr>
+          <td><%= room.room_name %></td>
+          <td><%= room.room_address %></td>
+          <td><%= room.room_introduction %></td>
+          <td>¥<%= room.room_fee %></td>
+          <td><%= link_to '詳細はこちら', room_path(room) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

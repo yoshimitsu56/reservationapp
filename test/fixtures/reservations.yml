@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rev_checkin: 2024-08-26
+  rev_checkout: 2024-08-26
+  rev_lengthofstay: 1
+  rev_finalbill: 1
+  rev_headcount: 1
+
+two:
+  rev_checkin: 2024-08-26
+  rev_checkout: 2024-08-26
+  rev_lengthofstay: 1
+  rev_finalbill: 1
+  rev_headcount: 1
