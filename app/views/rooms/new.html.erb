@@ -20,10 +20,17 @@
       <th><%= f.label :room_address, "住所" %></th>
       <td><%= f.text_field :room_address %></td>
     </tr>
+    <tr>
+    <th>施設画像</th>
+      <td>
+      <%= f.file_field :room_image, id:"item-image", class:"hidden" %>
+      </td>
+    </tr>
   </table>
   <div>
     <ul>
       <li><%= f.submit "登録完了する"%></li>
+      
     </ul>
   </div>
 <% end %>

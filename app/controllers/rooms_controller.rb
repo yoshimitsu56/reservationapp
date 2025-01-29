@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(params.require(:room).permit(:room_name, :room_introduction, :room_fee, :room_address))
+    @room = Room.new(params.require(:room).permit(:room_name, :room_introduction, :room_fee, :room_address, :room_image))
     @room.user_id = current_user.id
     if @room.save
       flash[:notice] = "予約が完了しました。"

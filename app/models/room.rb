@@ -9,6 +9,8 @@ class Room < ApplicationRecord
     Room.where('room_name LIKE(?)', "%#{search}%")
   end
 
+  mount_uploader :room_image, ImageUploader
+
   has_many :reservations
   belongs_to :user
 end
