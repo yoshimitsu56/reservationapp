@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reservation</title>
+    <title>HotelBookingApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,63 @@
   </head>
 
   <body>
+    <header>
+      <h1>reservation</h1>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#"
+            role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <% if current_user.user_image.present? %>
+              <%= image_tag current_user.user_image.url %>
+            <% else %>
+              <%= image_tag("default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png")%>
+            <% end %>
+            <span><%= current_user.user_name %></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">
+              <%= link_to 'トップ', :root %>
+            </a>
+            <a class="dropdown-item" href="#">
+              <%= link_to 'アカウント', "/users/account" %>
+            </a>
+            <a class="dropdown-item" href="#">
+              <%= link_to 'プロフィール', "/users/profile" %>
+            </a>
+            <a class="dropdown-item" href="#">
+              <%= link_to '施設の新規登録', '/rooms/new' %>
+            </a>
+            <a class="dropdown-item" href="#">
+            <%= link_to '登録済み一覧', :rooms %>
+            </a>
+            <a class="dropdown-item" href="#">
+            <%= link_to '予約済み一覧', :reservations %>
+            </a>
+            <a class="dropdown-item" href="#">
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            </a>
+          </div>
+        </div>
+      <% else %>
+        <button type="button" class="btn btn-outline-success">
+          <%= link_to '新規登録', "/users/sign_up" %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to 'ログイン', "/users/sign_in" %>
+        </button>
+      <% end %>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+      <footer>
+        <h1>reservation</h1>
+      </footer>
+    </body>
 </html>

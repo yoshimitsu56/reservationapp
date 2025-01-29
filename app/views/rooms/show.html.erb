@@ -1,0 +1,29 @@
+<h2>施設詳細</h2>
+
+<table>
+  <tr>
+    <th>施設画像</th>
+    <td>
+    <% if @room.room_image.present? %>
+      <%= image_tag @room.room_image.url %>
+    <% else %>
+      <%= image_tag("default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png")%>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>施設名</th>
+    <td><%= @room.room_name %></td>
+  </tr>
+  <tr>
+    <th>紹介文</th>
+    <td><%= @room.room_introduction %></td>
+  </tr>
+  <tr>
+    <th>宿泊料金</th>
+    <td>¥<%= @room.room_fee %></td>
+  </tr>
+</table>
+
+<p><%= link_to '予約', new_reservation_path(id: @room) %></p>
+<%= link_to "戻る", :back %>
